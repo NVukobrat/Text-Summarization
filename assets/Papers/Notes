@@ -1,0 +1,110 @@
+# Overview papers
+
+### Automatic Text Summarization (ATS) categories
+- Based on Input type:
+    - Single document - Summarize single document.
+    - Multi document - Summarize multyple document regarding same topic to single summary.
+- Based on Purpose:
+    - Generic - Fits in general applications. Does not make assumpations regarsding the domain of the content.
+    - Domain specific - Focuses on specific domain. Besides input text, uses domain-specific knowledge that helps to produce a more accurate summary.
+    - Query based - Extract short summary based on user query. Offten related to question-answer based summaries.
+- Based on Output type:
+    - Extractive - Extracts main keywords or phrases or sentences from the document, combine them and include them in the final summary. One of the approach is to use classification technique to extact important features. For example, using different metrics, you can have 2 class problem where 0 are not important, and 1 are important sentences for final summary.
+    - Abstractive - Focuses on generating phrases and/or sentences from scratch in order to maintain the key concept alive in summary.
+    - Hybrid - Combines both Extractive and Abstractive approach.
+
+### Use case examples:
+- News headlines
+- Notes summary
+- Meeting summary
+- Movie summary
+- Review summary
+- Resume summary
+- Book simplification for childrens
+- Stock market report Summarization
+- History event Summarization
+
+### Available tools
+- Extractive Text Summarization:
+    - TextSummarization
+    - Resoomer
+    - Text Compactor
+    - SummarizeBot
+- Abstractive Text Summarization:
+    - Deep Learning models:
+        - Attentional Recurrent Neural Networks encoder-decoder models
+        - Sequence-to-Sequence models
+        - Encoder-Decoder Sequence-to-Sequence models
+
+### Extractive approach
+- Preprocess:
+  - Tokenization
+  - Step words removal
+  - Porter Stemming
+  - POS tagging
+- Feature extraction - convert data to numerical form (can be frequency based and prediction based):
+  - Frequency based:
+    - TF-IDF - focuse on reare words in the document. For single document, TF-ISF (term frequency inverse sentence frequency) is calculated. For multiple document, TF-ID (term frequency inverse document frequency) is used. TF-IDF is calculated as:
+        - (term_frequency / (term_frequency + 1))  * log(number_of_documents / document_frequency)
+    - Sentence location
+    - Sentence length
+- Feed Neural Network
+- Output score for each sentence [0, 1] - defines importance of the sentenc
+
+### Extractive approach tasks
+- Construct an intermediate representation of the input text which express the main aspects of the text:
+    - Topic representation (transforms text in intermidiate representation):
+        - Frequency-driven approach
+        - Topic word approach
+        - Latent semantic analysis
+        - Bayesian topic models
+    - Indicator representation (describes every sentence as list of features; for example: sentence length, position in the text, having certain phrase(s), etc.):
+        - Weighted graphs - represent document as connected graphs
+        - Machine Learning - 
+- Score the sentences based on the representation (assign importance score to each sentence):
+    - In topic representation approach score is represents how well the sentence explains topic of the text.
+    - In indicator representation score is computed by aggregating different indicators (offten finding weights using Machine Learning models)
+- Select a summary comprising of a number of sentences (select the top K most important sentences)
+- Evaluation:
+    - Human evaluation
+    - Automatic evaluation:
+        - ROGUE
+
+### Extractive features
+- Topic representation based:
+    - Topic words
+    - Frequency-driven approach:
+        - Word probability
+        - TFIDF
+    - Latent semantic analysis
+    - Bayesian Topic Models
+
+### Abstractive approach
+- / 
+
+### Evaluation metrics
+- ROGUE (Recall-Oriented Understury):
+    - N: Using N-grams overlap.
+    - L: longest maching sequence of words using LCS.
+    - S: Skip-gram measures the overlap of word pairs that can have maximum N gaps between words.
+- Precision = number of overlapping words / total words in system summary
+- Recall = number of overlapping words / total words in reference summary
+- F1
+- Human
+
+### Datasets
+- DUC
+- CNN 
+- Gigaword
+- Elsevier
+- Articles
+- Opinonis
+- Daily Mail
+- Newsroom
+- TAC
+- OSAC
+
+# Notes:
+- Use Extractive approach to determine most important sentences in the text. Then use, Abstractive approach to create summary based on already extracted sentences. This will create Hybrid approach of Automatic Text Summarization.
+- Use features from Adamovic (100% Iris) paper for sentence Extraction.
+- Have in mind context (from where information is comming). This can indicate more precisely what it the topic of the document (blogs, news article, website, scientific article, email, etc.)
