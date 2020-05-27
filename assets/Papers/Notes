@@ -108,3 +108,5 @@
 - Use Extractive approach to determine most important sentences in the text. Then use, Abstractive approach to create summary based on already extracted sentences. This will create Hybrid approach of Automatic Text Summarization.
 - Use features from Adamovic (100% Iris) paper for sentence Extraction.
 - Have in mind context (from where information is comming). This can indicate more precisely what it the topic of the document (blogs, news article, website, scientific article, email, etc.)
+- Experiment with different metrics proposed in relevant papers.
+- Generative (GANs) approach?
