@@ -2,8 +2,10 @@ import re
 
 import nltk
 from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
 
 stop_words = set(stopwords.words('english'))
+lemmatizer = WordNetLemmatizer()
 
 
 def remove_special_characters(text):
@@ -11,6 +13,14 @@ def remove_special_characters(text):
     text = re.sub(regex, '', text)
 
     return text
+
+
+def lemmatize_words(words):
+    lemmatized_words = []
+    for word in words:
+        lemmatized_words.append(lemmatizer.lemmatize(word))
+
+    return lemmatized_words
 
 
 def pos_tagging(text):

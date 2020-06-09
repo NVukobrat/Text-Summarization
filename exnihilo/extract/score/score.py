@@ -2,22 +2,20 @@ import math
 import re
 
 from exnihilo.extract.preprocess import preprocess
-from exnihilo.extract.preprocess.lemmantize import lemmatizer
-from exnihilo.extract.preprocess.preprocess import stop_words
+from exnihilo.extract.preprocess.preprocess import stop_words, lemmatizer
 
 
-def sentence_importance(sentence, dict_freq, sentences):
+def sentence_importance(sentence, sentences):
     sentence_score = 0
     sentence = preprocess.remove_special_characters(str(sentence))
     sentence = re.sub(r'\d+', '', sentence)
-    pos_tagged_sentence = []
-    no_of_sentences = len(sentences)
     pos_tagged_sentence = preprocess.pos_tagging(sentence)
     for word in pos_tagged_sentence:
         if word.lower() not in stop_words and word not in stop_words and len(word) > 1:
             word = word.lower()
             word = lemmatizer.lemmatize(word)
-            sentence_score = sentence_score + word_tfidf(dict_freq, word, sentences, sentence)
+            sentence_score = sentence_score + word_tfidf(word, sentences, sentence)
+
     return sentence_score
 
 
@@ -30,14 +28,15 @@ def freq(words):
             words_unique.append(word)
     for word in words_unique:
         dict_freq[word] = words.count(word)
+
     return dict_freq
 
 
-def word_tfidf(dict_freq, word, sentences, sentence):
-    word_tfidf = []
+def word_tfidf(word, sentences, sentence):
     tf = tf_score(word, sentence)
     idf = idf_score(len(sentences), word, sentences)
     tf_idf = tf_idf_score(tf, idf)
+
     return tf_idf
 
 
