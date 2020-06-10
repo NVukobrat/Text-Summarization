@@ -11,7 +11,7 @@ from exnihilo import utils
 
 utils.init()
 
-text = data.read_from_file("input.txt")
+text = data.read_from_file("../../input.txt")
 
 tokenized_sentence = sent_tokenize(text)
 text = preprocess.remove_special_characters(str(text))
