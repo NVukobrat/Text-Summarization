@@ -12,5 +12,5 @@ nlp.add_pipe(tr.PipelineComponent, name="textrank", last=True)
 doc = nlp(text)
 
 print("Summary:")
-for sent in doc._.textrank.summary(limit_phrases=15, limit_sentences=2):
-    print(sent)
+for sent in doc._.textrank.summary(limit_phrases=15, limit_sentences=3):
+    print(sent, end=" ")

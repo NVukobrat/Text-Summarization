@@ -4,4 +4,4 @@ from exnihilo import data
 
 text = data.read_from_file("../input.txt")
 
-print(summarize(text=text, ratio=0.15, word_count=None, split=False))
+print(summarize(text=text, ratio=0.015, word_count=None, split=False))
