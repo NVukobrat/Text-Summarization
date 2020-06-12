@@ -7,9 +7,6 @@ from exnihilo import data
 from exnihilo import preprocess
 from exnihilo import score
 from exnihilo import stop_words
-from exnihilo import utils
-
-utils.init()
 
 text = data.read_from_file("../../input.txt")
 

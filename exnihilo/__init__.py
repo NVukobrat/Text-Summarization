@@ -1,8 +1,12 @@
+from exnihilo.extract.util import utils
+
+# Init
+utils.init()
+
 # Packages
 from exnihilo.extract.data import data
 from exnihilo.extract.preprocess import preprocess
 from exnihilo.extract.score import score
-from exnihilo.extract.util import utils
 
 # Global objects
 from exnihilo.extract.preprocess.preprocess import lemmatizer
